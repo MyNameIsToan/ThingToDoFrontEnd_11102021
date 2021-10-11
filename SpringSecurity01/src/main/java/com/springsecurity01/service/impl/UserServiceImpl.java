@@ -91,4 +91,10 @@ public class UserServiceImpl implements UserService{
 			userRepository.delete(userentity);
 		}
 	}
+
+	@Override
+	public User findUser(String username) {
+		User user = userRepository.findByUsername(username);
+		return user;
+	}
 }

@@ -24,6 +24,8 @@ public class NoteEntity{
 	private Long ParentId;
 	@Column(name="content")
 	private String Content;
+	@Column(name="haschild")
+	private int Haschild;
 	@ManyToOne
     @JoinColumn(name = "users")
     private User users;

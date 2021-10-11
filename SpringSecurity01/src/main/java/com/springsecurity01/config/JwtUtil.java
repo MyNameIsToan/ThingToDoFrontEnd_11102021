@@ -15,6 +15,7 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import com.springsecurity01.entity.User;
 
 import net.minidev.json.JSONObject;
 
@@ -28,7 +29,10 @@ public class JwtUtil {
         String token = null;
         try {
             JWTClaimsSet.Builder builder = new JWTClaimsSet.Builder();
-            builder.claim(USER, user);
+            UserPrincipal TokenUser = new UserPrincipal();
+            TokenUser.setUsername(user.getUsername());
+            TokenUser.setAuthorities(user.getAuthorities());
+            builder.claim(USER, TokenUser);
             builder.expirationTime(generateExpirationDate());
             JWTClaimsSet claimsSet = builder.build();
             SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
@@ -42,7 +46,7 @@ public class JwtUtil {
     }
 
     public Date generateExpirationDate() {
-        return new Date(System.currentTimeMillis() + 864000000);
+        return new Date(System.currentTimeMillis() + 1800000);
     }
     
     private JWTClaimsSet getClaimsFromToken(String token) {

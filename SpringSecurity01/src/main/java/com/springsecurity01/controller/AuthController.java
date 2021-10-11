@@ -37,6 +37,7 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtil;
+    
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user){
         UserPrincipal userPrincipal = userService.findByUsername(user.getUsername());
@@ -66,7 +67,7 @@ public class AuthController {
         return ResponseEntity.ok("hello");
     }
     
-    @PostMapping("/signout")
+    @GetMapping("/signout")
     public ResponseEntity<String> Logout(){
     	final String authorizationHeader = request.getHeader("Authorization");
     	UserPrincipal user = null;

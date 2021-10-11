@@ -18,4 +18,6 @@ public interface UserService {
 	void Update(UserDTO user);
 
 	void Delete(String Username);
+	
+	User findUser(String username);
 }

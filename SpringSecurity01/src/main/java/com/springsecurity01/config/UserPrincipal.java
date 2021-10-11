@@ -36,5 +36,4 @@ public class UserPrincipal implements UserDetails{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
 }

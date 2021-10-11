@@ -8,4 +8,5 @@ public class NoteDTO {
 	private Long parentid;
 	private String content;
 	private String username;
+	private int haschild;
 }
